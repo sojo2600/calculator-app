@@ -32,8 +32,9 @@ export default class Calculator extends React.Component {
   }
 
   handleOperatorClick = (operator) => {
-    const computed = this.computeOperation();
-    this.setState({ computed, display: computed, input: '', operator })
+    const { input, computed } = this.state
+    const newComputed = input.length? this.computeOperation() : computed
+    this.setState({ computed: newComputed, display: newComputed, input: '', operator })
   }
 
   computeOperation = () => {
